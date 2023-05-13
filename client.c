@@ -6,7 +6,7 @@
 /*   By: azgaoua <azgaoua@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:28:23 by azgaoua           #+#    #+#             */
-/*   Updated: 2023/05/11 18:28:27 by azgaoua          ###   ########.fr       */
+/*   Updated: 2023/05/13 19:14:53 by azgaoua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,24 @@ int ft_isvalid(char *av)
     
     i = 0;
     if(av[i] == '0')
+    {
+        write(2, "wrong PID \"zero at first !!\"", 29);
         return (0);
+    }
     while (av[i])
     {
         if(av[i] != '\0' && av[i] >= '0' && av[i] <= '9')
             i++;
         else
+        {
+            if (av[i] == '+' || av[i] == '-')
+                write(2, "wrong PID \"remove signe !!\"", 28);
+            else if (av[i] == ' ')
+                write(2, "wrong PID \"remove space !!\"", 28);
+            else
+                write(2, "some thing wrong on your PID",28);
             return (0);
+        }
     }
     return (1);
 }

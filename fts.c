@@ -6,7 +6,7 @@
 /*   By: azgaoua <azgaoua@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 22:34:57 by azgaoua           #+#    #+#             */
-/*   Updated: 2023/05/12 16:03:53 by azgaoua          ###   ########.fr       */
+/*   Updated: 2023/05/13 18:52:01 by azgaoua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,11 @@ int	ft_atoi(char *nbr)
 
 	i = 0;
 	retu = 0;
-	if (nbr[i] == '+')
-		i++;
-	while (nbr[i] >= '0' && nbr[i] <= '9' && nbr[i] != '\0')
+
+	while (nbr[i] != '\0' && nbr[i] >= '0' && nbr[i] <= '9')
 	{
 		retu = (retu * 10) + nbr[i] - 48;
-		if (retu > 4294967295)
+		if (retu >= 4294967295)
 			return (-1);
 		i++;
 	}

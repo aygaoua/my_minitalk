@@ -6,7 +6,7 @@
 /*   By: azgaoua <azgaoua@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:34:44 by azgaoua           #+#    #+#             */
-/*   Updated: 2023/05/12 16:44:41 by azgaoua          ###   ########.fr       */
+/*   Updated: 2023/05/13 19:13:50 by azgaoua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	handler(int si, siginfo_t *pi, void *cont)
 	static char	c;
 	static int	i;
 	static int	Pid;
-	
+
 	(void)cont;
 	if (Pid != pi->si_pid)
 	{
@@ -41,8 +41,8 @@ int main()
 
 	act.sa_flags = SA_SIGINFO;
 	act.sa_sigaction = handler;
-	sigaction(SIGUSR1, &act, NULL);
-	sigaction(SIGUSR2, &act, NULL);
+	sigaction(SIGUSR1, &act, NULL); // receive
+	sigaction(SIGUSR2, &act, NULL); // receive
 	write (1, "PID: ", 5);
 	ft_putnbr(getpid());
 	write (1, "\n", 1);
