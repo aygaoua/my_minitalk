@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fts.c                                              :+:      :+:    :+:   */
+/*   fts_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azgaoua <azgaoua@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 22:34:57 by azgaoua           #+#    #+#             */
-/*   Updated: 2023/05/15 15:52:22 by azgaoua          ###   ########.fr       */
+/*   Created: 2023/05/14 15:46:23 by azgaoua           #+#    #+#             */
+/*   Updated: 2023/05/15 16:31:49 by azgaoua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
-void	ft_putchar(char c)
+void	ft_putchar_bns(char c)
 {
 	write(1, &c, 1);
 }
 
-void	ft_putnbr(int nb)
+void	ft_putnbr_bns(int nb)
 {
 	if (nb >= 0 && nb < 10)
-		ft_putchar((char)(nb + 48));
+		ft_putchar_bns((char)(nb + 48));
 	else if (nb > 0)
 	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		ft_putnbr_bns(nb / 10);
+		ft_putnbr_bns(nb % 10);
 	}
 }
 
-int	ft_atoi(char *nbr)
+int	ft_atoi_bns(char *nbr)
 {
 	int		i;
 	long	retu;

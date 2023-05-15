@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azgaoua <azgaoua@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:34:44 by azgaoua           #+#    #+#             */
-/*   Updated: 2023/05/14 15:42:30 by azgaoua          ###   ########.fr       */
+/*   Created: 2023/05/14 15:43:04 by azgaoua           #+#    #+#             */
+/*   Updated: 2023/05/15 16:31:08 by azgaoua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
-void	handler(int si, siginfo_t *pi, void *cont)
+void	handler_bns(int si, siginfo_t *pi, void *cont)
 {
 	static char	c;
 	static int	i;
@@ -30,6 +30,8 @@ void	handler(int si, siginfo_t *pi, void *cont)
 	if (i == 8)
 	{
 		write(1, &c, 1);
+		if (c == 0)
+			kill(pi->si_pid, SIGUSR2);
 		c = 0;
 		i = 0;
 	}
@@ -40,11 +42,11 @@ int	main(void)
 	struct sigaction	act;
 
 	act.sa_flags = SA_SIGINFO;
-	act.sa_sigaction = handler;
+	act.sa_sigaction = (void *)handler_bns;
 	sigaction(SIGUSR1, &act, NULL);
 	sigaction(SIGUSR2, &act, NULL);
 	write (1, "PID: ", 5);
-	ft_putnbr(getpid());
+	ft_putnbr_bns(getpid());
 	write (1, "\n", 1);
 	while (0 == 0)
 		pause();
