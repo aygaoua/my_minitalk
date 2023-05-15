@@ -1,3 +1,3 @@
 # my_minitalk
 
-V1.2
+V1.3
