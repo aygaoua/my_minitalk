@@ -32,10 +32,6 @@ all :  $(NAME) $(NAME_C)
 
 bonus :  $(NAME_B) $(NAME_C_B)
 
-%.o: %.c
-	@echo " making : $@ \n (from this : >> $< <<) \n /-|-|-|-|-|-|-|-|-|-|-/"
-	@$(CC) $(FLGS) -c $<
-
 $(NAME) : server.c fts.c minitalk.h
 	@echo "making the server of minitalk"
 	@$(CC) $(FLGS) server.c fts.c -o $(NAME)
